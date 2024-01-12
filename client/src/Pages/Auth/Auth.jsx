@@ -21,19 +21,42 @@ const Auth = () => {
     setEmail("");
     setPassword("");
   };
-
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email && !password) {
       alert("Enter email and password");
+      return;
     }
-    if (isSignup) {
-      if (!name) {
-        alert("Enter a name to continue");
+
+    const loginInfo = {
+      browser: navigator.userAgent,
+      os: navigator.platform,
+      device: /Mobi/.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
+    }
+    try {
+      if (isSignup) {
+        if (!name) {
+          alert("Enter a name to continue");
+          return;
+        }
+        await dispatch(signup({ name, email, password }, navigate));
+      } else {
+        await dispatch(login({ email, password }, navigate));
       }
-      dispatch(signup({ name, email, password }, navigate));
-    } else {
-      dispatch(login({ email, password }, navigate));
+      const backendUrl = 'http://localhost:3000'; 
+
+      await fetch(`${backendUrl}/user/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginInfo),
+      });
+
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("Something went wrong. Please try again.");
     }
   };
 
