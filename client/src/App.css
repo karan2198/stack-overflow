@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+.App.night{
+  background-color: black;
+}
 
 .App-logo {
   height: 40vmin;

@@ -10,7 +10,8 @@ import "./Navbar.css";
 import { setCurrentUser } from "../../actions/currentUser";
 import bars from "../../assets/bars-solid.svg";
 
-const Navbar = ({ handleSlideIn }) => {
+const Navbar = ({ handleSlideIn, isDay }) => {
+  
   const dispatch = useDispatch();
   var User = useSelector((state) => state.currentUserReducer);
   const navigate = useNavigate();
@@ -32,23 +33,29 @@ const Navbar = ({ handleSlideIn }) => {
     dispatch(setCurrentUser(JSON.parse(localStorage.getItem("Profile"))));
   }, [User?.token, dispatch]);
 
+  if (isDay === undefined) {
+    return null;
+  }
+
+  console.log('isDay in Navbar:', isDay);
+
   return (
-    <nav className="main-nav">
-      <div className="navbar">
+    <nav className={`main-nav ${isDay ? 'day' : 'night'}`}>
+      <div className={`navbar ${isDay ? 'day' : 'night'}`}>
         <button className="slide-in-icon" onClick={() => handleSlideIn()}>
           <img src={bars} alt="bars" width="15" />
         </button>
         <div className="navbar-1">
-          <Link to="/" className="nav-item nav-logo">
+          <Link to="/" className={`nav-item nav-logo ${isDay ? 'day' : 'night'}`}>
             <img src={logo} alt="logo" />
           </Link>
-          <Link to="/" className="nav-item nav-btn res-nav">
+          <Link to="/" className={`nav-item nav-btn res-nav ${isDay ? 'day' : 'night'}`}>
             About
           </Link>
-          <Link to="/" className="nav-item nav-btn res-nav">
+          <Link to="/" className={`nav-item nav-btn res-nav ${isDay ? 'day' : 'night'}`}>
             Products
           </Link>
-          <Link to="/" className="nav-item nav-btn res-nav">
+          <Link to="/" className={`nav-item nav-btn res-nav ${isDay ? 'day' : 'night'}`}>
             For Teams
           </Link>
           <form>

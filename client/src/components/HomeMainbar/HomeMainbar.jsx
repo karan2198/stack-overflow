@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 import "./HomeMainbar.css";
 import QuestionList from "./QuestionList";
 
-const HomeMainbar = () => {
+const HomeMainbar = (isDay) => {
+  console.log('isDay in HomeMianBar', isDay);
   const location = useLocation();
   const user = 1;
   const navigate = useNavigate();
@@ -21,8 +22,8 @@ const HomeMainbar = () => {
   };
 
   return (
-    <div className="main-bar">
-      <div className="main-bar-header">
+    <div className={`main-bar ${isDay ? 'day' : 'night'}`}>
+      <div className={`main-bar-header ${isDay ? 'day' : 'night'}`}>
         {location.pathname === "/" ? (
           <h1>Top Questions</h1>
         ) : (

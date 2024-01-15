@@ -14,7 +14,9 @@
 .main-bar-header h1 {
   font-weight: 400;
 }
-
+.main-bar-header.night h1{
+  color: rgb(230, 21, 21);
+}
 .main-bar-header .ask-btn {
   padding: 10px 15px;
   border-radius: 4px;

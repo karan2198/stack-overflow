@@ -8,10 +8,20 @@
   z-index: 15;
   top: 0%;
   left: 0%;
-  background-color: #f8f9f9;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.main-nav.day {
+  background-color: white;
+  /* Customize the color for daytime */
+}
+
+.main-nav.night {
+  background-color: black;
+
+  /* Customize the color for nighttime */
 }
 
 .navbar {
@@ -46,6 +56,9 @@
 .nav-logo {
   padding: 5px 25px;
 }
+.nav-logo.night{
+  background-color: white;
+}
 
 .nav-item {
   margin: 0px 3px;
@@ -55,7 +68,9 @@
   color: rgb(69, 69, 69);
   transition: 0.2s;
 }
-
+.nav-item.night {
+  color:white;
+}
 .nav-btn {
   cursor: pointer;
   border-radius: 20px;

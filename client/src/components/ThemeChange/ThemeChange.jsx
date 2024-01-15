@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import './App.css';
-import Navbar from './components/Navbar/Navbar';
-import AllRoutes from './AllRoutes';
-import { fetchAllQuestions } from './actions/question';
-import { fetchAllUsers } from './actions/users';
-import ThemeChange from './components/ThemeChange/ThemeChange'
-function App() {
-  const dispatch = useDispatch();
+import Navbar from '../Navbar/Navbar';
+
+
+const ThemeChange = () => {
   const [isDay, setIsDay] = useState(true);
-  const [slideIn, setSlideIn] = useState(true);
 
   useEffect(() => {
     const fetchWeather = async (latitude, longitude) => {
@@ -25,12 +18,12 @@ function App() {
 
         const isDaytime = currentTime > sunrise && currentTime < sunset;
 
-        setIsDay(prevIsDay => isDaytime);
+        setIsDay(isDaytime);
         console.log('Current Time:', currentTime);
         console.log('Sunrise:', sunrise);
         console.log('Sunset:', sunset);
         console.log('API Response:', data);
-        console.log('isDay in App:', isDay);
+        console.log('isDay in Theme Change:', isDay);
 
       } catch (error) {
         console.error('Error fetching weather:', error);
@@ -53,37 +46,14 @@ function App() {
     } else {
       console.error('Geolocation is not supported in this browser.');
     }
-  }, []);
-
-  useEffect(() => {
-    if (window.innerWidth <= 760) {
-      setSlideIn(false);
-    }
-  }, []);
-
-  const handleSlideIn = () => {
-    if (window.innerWidth <= 760) {
-      setSlideIn((state) => !state);
-    }
-  };
-
-  useEffect(() => {
-    dispatch(fetchAllQuestions());
-    dispatch(fetchAllUsers());
-  }, [dispatch]);
+  }, [setIsDay]);
 
   return (
-
-    <div className={`App ${isDay ? 'day' : 'night'}`}>
-      <Router>
-        <ThemeChange />
-        <Navbar handleSlideIn={handleSlideIn} />
-        <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn} isDay={isDay} />
-      </Router>
-
+    <div>
+      <Navbar isDay={isDay} />
+      
     </div>
-
   );
-}
+};
 
-export default App;
+export default ThemeChange;
