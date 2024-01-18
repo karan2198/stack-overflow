@@ -15,13 +15,13 @@
 
 .main-nav.day {
   background-color: white;
-  /* Customize the color for daytime */
+  
 }
 
 .main-nav.night {
   background-color: black;
 
-  /* Customize the color for nighttime */
+
 }
 
 .navbar {

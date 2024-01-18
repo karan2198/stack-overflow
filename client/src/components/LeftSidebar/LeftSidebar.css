@@ -8,7 +8,9 @@
   box-sizing: border-box;
   font-size: 13px;
 }
-
+.left-sidebar.night{
+  background-color: black;
+}
 .nav-btn {
   background-color: inherit;
   width: 100%;
@@ -16,6 +18,9 @@
   padding: 0%;
 }
 
+.side-nav.night{
+  background-color: black;
+}
 .side-nav {
   height: auto;
   max-width: 100%;
@@ -51,6 +56,10 @@
   color: black;
   background-color: rgb(225, 225, 225);
   border-right: solid 3px #ef8236;
+}
+
+.all.night{
+  color:white;
 }
 
 @media screen and (max-width: 760px) {

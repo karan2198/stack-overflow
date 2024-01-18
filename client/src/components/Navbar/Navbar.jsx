@@ -63,7 +63,7 @@ const Navbar = ({ handleSlideIn, isDay }) => {
             <img src={search} alt="search" width="18" className="search-icon" />
           </form>
         </div>
-        <div className="navbar-2">
+        <div className="navbar-2" style={{paddingLeft:'20px'}}>
           {User === null ? (
             <Link to="/Auth" className="nav-item nav-links">
               Log in

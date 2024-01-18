@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 import "./HomeMainbar.css";
 import QuestionList from "./QuestionList";
 
-const HomeMainbar = (isDay) => {
+const HomeMainbar = ({isDay}) => {
+  //const { isDay } = props;
   console.log('isDay in HomeMianBar', isDay);
   const location = useLocation();
   const user = 1;

@@ -5,12 +5,12 @@ import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import RightSidebar from "../../components/RightSidebar/RightSidebar";
 import HomeMainbar from "../../components/HomeMainbar/HomeMainbar";
 
-const Home = ({ slideIn }) => {
+const Home = ({ slideIn , isDay }) => {
   return (
     <div className="home-container-1">
-      <LeftSidebar slideIn={slideIn} />
+      <LeftSidebar slideIn={slideIn} isDay={isDay}/>
       <div className="home-container-2">
-        <HomeMainbar />
+        <HomeMainbar isDay={isDay}/>
         <RightSidebar />
       </div>
     </div>

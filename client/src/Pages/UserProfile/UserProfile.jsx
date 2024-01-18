@@ -11,7 +11,7 @@ import EditProfileForm from "./EditProfileForm";
 import ProfileBio from "./ProfileBio";
 import "./UsersProfile.css";
 
-const UserProfile = ({ slideIn, handleSlideIn }) => {
+const UserProfile = ({ slideIn, handleSlideIn , isDay}) => {
   const { id } = useParams();
   const users = useSelector((state) => state.usersReducer);
   const currentProfile = users.filter((user) => user._id === id)[0];
@@ -59,7 +59,7 @@ const UserProfile = ({ slideIn, handleSlideIn }) => {
                 setSwitch={setSwitch}
               />
             ) : (
-              <ProfileBio currentProfile={currentProfile} />
+              <ProfileBio currentProfile={currentProfile} isDay={isDay} />
             )}
           </>
         </section>

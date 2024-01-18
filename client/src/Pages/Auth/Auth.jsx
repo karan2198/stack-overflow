@@ -6,7 +6,7 @@ import "./Auth.css";
 import icon from "../../assets/icon.png";
 import AboutAuth from "./AboutAuth";
 import { signup, login } from "../../actions/auth";
-const Auth = () => {
+const Auth = ({isDay}) => {
   const [isSignup, setIsSignup] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -61,8 +61,8 @@ const Auth = () => {
   };
 
   return (
-    <section className="auth-section">
-      {isSignup && <AboutAuth />}
+    <section className={`auth-section ${isDay ? 'day' : 'night'}`}>
+      {isSignup && <AboutAuth isDay={isDay} />}
       <div className="auth-container-2">
         <img src={icon} alt="stack overflow" className="login-logo" />
         <form onSubmit={handleSubmit}>
@@ -115,7 +115,7 @@ const Auth = () => {
             {isSignup ? "Sign up" : "Log in"}
           </button>
         </form>
-        <p>
+        <p className={`form-bottom ${isDay ? 'day' : 'night'}`}>
           {isSignup ? "Already have an account?" : "Don't have an account?"}
           <button
             type="button"

@@ -1,8 +1,8 @@
 import React from "react";
 
-const AboutAuth = () => {
+const AboutAuth = ({isDay}) => {
   return (
-    <div className="auth-container-1">
+    <div className={`auth-container-1 ${isDay ? 'day' : 'night'}`}>
       <h1>Join the Stack Overflow community</h1>
       <p>Get unstuck — ask a question</p>
       <p>Unlock new privileges like voting and commenting</p>
