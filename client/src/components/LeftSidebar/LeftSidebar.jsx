@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import Globe from "../../assets/Globe.svg";
 
 const LeftSidebar = ({ slideIn, handleSlideIn, isDay}) => {
+  console.log('isDay in leftSideBar:' , isDay);
   const slideInStyle = {
     transform: "translateX(0%)",
   };

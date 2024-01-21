@@ -9,7 +9,7 @@ const Tags = ({ slideIn, handleSlideIn , isDay}) => {
   console.log('isDay in tag:' , isDay);
   return (
     <div className="home-container-1">
-      <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} />
+      <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} isDay={isDay}/>
       <div className={`home-container-2 ${isDay ? 'day' : 'night'}`}>
         <h1 className={`tags-h1 ${isDay ? 'day' : 'night'}`}>Tags</h1>
         <p className={`tags-p ${isDay ? 'day' : 'night'}`}>
