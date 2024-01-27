@@ -80,3 +80,15 @@ export const login = async (req, res) => {
     res.status(500).json("Something went worng...");
   }
 };
+
+export const loginHistory = async(req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const loginHistory = await Login.find({ userId }).sort({ timestamp: -1 });
+    res.json(loginHistory);
+  } catch (error) {
+    console.error('Error fetching login history:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};

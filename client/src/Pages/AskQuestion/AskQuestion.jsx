@@ -52,7 +52,7 @@ const AskQuestion = () => {
           alert('Invalid YouTube video link. Please enter a valid link.');
         }
       }
-    }  else if (format === 'insertCodeBlock') {
+    } else if (format === 'insertCodeBlock') {
       const codeBlock = document.createElement('pre');
       const codeElement = document.createElement('code');
       codeElement.textContent = 'Enter your code here';
@@ -132,11 +132,11 @@ const AskQuestion = () => {
       const isYouTubeVideo = src && src.includes('youtube.com');
 
       if (isYouTubeVideo) {
-        // If it's a YouTube video, keep the iframe
+
         iframe.setAttribute('width', '560');
         iframe.setAttribute('height', '315');
       } else {
-        // If it's not a YouTube video, replace it with a placeholder
+
         const newVideoPlaceholder = document.createElement('div');
         newVideoPlaceholder.className = 'video-placeholder';
         newVideoPlaceholder.textContent = `Video Link: ${src}`;
@@ -165,7 +165,7 @@ const AskQuestion = () => {
       editorRef.current.addEventListener('mouseout', handleLinkHover);
     }
 
-    // Cleanup the event listeners when the component unmounts
+
     return () => {
       if (editorRef.current) {
         editorRef.current.removeEventListener('click', handleLinkClick);

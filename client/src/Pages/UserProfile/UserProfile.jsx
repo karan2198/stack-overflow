@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,13 +11,53 @@ import EditProfileForm from "./EditProfileForm";
 import ProfileBio from "./ProfileBio";
 import "./UsersProfile.css";
 
-const UserProfile = ({ slideIn, handleSlideIn , isDay}) => {
+const UserProfile = ({ slideIn, handleSlideIn, isDay }) => {
   const { id } = useParams();
   const users = useSelector((state) => state.usersReducer);
   const currentProfile = users.filter((user) => user._id === id)[0];
   const currentUser = useSelector((state) => state.currentUserReducer);
   const [Switch, setSwitch] = useState(false);
+  const [loginHistory, setLoginHistory] = useState([]);
 
+
+  useEffect(() => {
+    const fetchLoginHistory = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/user/history/${id}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch login history');
+        }
+        const data = await response.json();
+        const latestEntry = data[0];
+        console.log('Login history data:', data);
+        setLoginHistory([latestEntry]);
+      } catch (error) {
+        console.error('Error fetching login history:', error);
+
+      }
+    };
+
+    fetchLoginHistory();
+  }, [id]);
+
+  const renderLoginHistory = () => {
+    return (
+      <div>
+        <h2>Login History</h2>
+        <ul>
+          {loginHistory.map((entry) => (
+            <li key={entry._id}>
+              <p>Timestamp: {moment(entry.timestamp).format("LLL")}</p>
+              <p>Browser: {entry.browser}</p>
+              <p>Device: {entry.device}</p>
+              <p>OS: {entry.os}</p>
+              <p>IP: {entry.ipAddress}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
   return (
     <div className="home-container-1">
       <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} />
@@ -54,12 +94,13 @@ const UserProfile = ({ slideIn, handleSlideIn , isDay}) => {
           </div>
           <>
             {Switch ? (
-              <EditProfileForm
-                currentUser={currentUser}
-                setSwitch={setSwitch}
-              />
+              <EditProfileForm currentUser={currentUser} setSwitch={setSwitch} />
             ) : (
-              <ProfileBio currentProfile={currentProfile} isDay={isDay} />
+              <>
+                <ProfileBio currentProfile={currentProfile} isDay={isDay} />
+                {renderLoginHistory()}
+
+              </>
             )}
           </>
         </section>
