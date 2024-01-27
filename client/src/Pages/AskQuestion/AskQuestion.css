@@ -53,3 +53,37 @@
 .review-btn:hover {
   background-color: #0086d8;
 }
+
+
+
+.text-editor-header {
+  background-color: #ecf0f1;
+  padding: 5px;
+}
+
+
+.text-editor-header .btn{
+  border: none;
+  outline: none;
+  background-color: transparent;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.content {
+  min-height: 200px;
+  border: solid 1px #0000003e;
+  border-top: 0px;
+  padding: 20px;
+}
+
+
+.link-hover {
+  cursor: pointer;
+  color: blue; 
+}
+
+.link-hover:hover {
+  text-decoration: underline;
+}
+

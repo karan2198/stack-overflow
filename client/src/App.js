@@ -8,6 +8,8 @@ import AllRoutes from './AllRoutes';
 import { fetchAllQuestions } from './actions/question';
 import { fetchAllUsers } from './actions/users';
 import ThemeChange from './components/ThemeChange/ThemeChange'
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 function App() {
   const dispatch = useDispatch();
   const [isDay, setIsDay] = useState(true);
