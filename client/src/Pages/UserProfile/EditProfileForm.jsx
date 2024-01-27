@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../../actions/users";
 
-const EditProfileForm = ({ currentUser, setSwitch }) => {
+const EditProfileForm = ({ currentUser, setSwitch, isDay}) => {
   const [name, setName] = useState(currentUser?.result?.name);
   const [about, setAbout] = useState(currentUser?.result?.about);
   const [tags, setTags] = useState([]);
@@ -19,7 +19,7 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
   };
 
   return (
-    <div>
+    <div className={` editProfile ${isDay ? 'day' : 'night'}`}>
       <h1 className="edit-profile-title">Edit Your Profile</h1>
       <h2 className="edit-profile-title-2">Public information</h2>
       <form className="edit-profile-form" onSubmit={handleSubmit}>

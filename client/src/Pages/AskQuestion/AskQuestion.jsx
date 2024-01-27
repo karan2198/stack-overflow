@@ -6,8 +6,7 @@ import "./AskQuestion.css";
 import { askQuestion } from "../../actions/question";
 import { faBold, faItalic, faUnderline, faListUl, faListOl, faLink, faAlignLeft, faAlignCenter, faAlignRight, faAlignJustify, faImage, faVideo, faCode } from '@fortawesome/free-solid-svg-icons';
 
-
-const AskQuestion = () => {
+const AskQuestion = ({isDay}) => {
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionBody, setQuestionBody] = useState("");
   const [questionTags, setQuestionTags] = useState("");
@@ -175,11 +174,11 @@ const AskQuestion = () => {
     };
   }, []);
   return (
-    <div className="ask-question">
-      <div className="ask-ques-container">
+    <div className={`ask-question ${isDay ? 'day' : 'night'}`}>
+      <div className={`ask-ques-container ${isDay ? 'day' : 'night'}`}>
         <h1>Ask a public Question</h1>
         <form onSubmit={handleSubmit}>
-          <div className="ask-form-container">
+          <div className={`ask-form-container ${isDay ? 'day' : 'night'}`}>
             <label htmlFor="ask-ques-title">
               <h4>Title</h4>
               <p>

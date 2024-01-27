@@ -3,6 +3,15 @@
   background-color: #f1f2f3;
 }
 
+.ask-question.night {
+  background-color: hsl(210,3%,15%);
+}
+.ask-form-container.night{
+  background-color: #6d6969;
+}
+.ask-form-container.day{
+  background-color: white;
+}
 .ask-ques-container {
   margin: auto;
   padding: 0px 20px 20px 20px;
@@ -13,9 +22,13 @@
   padding: 80px 0px 20px 0px;
 }
 
+.ask-ques-container.night h1{
+  color: white;
+}
+
 .ask-ques-container form .ask-form-container {
   padding: 20px;
-  background-color: white;
+ 
   border-radius: 3px;
   box-shadow: 0 10px 25px rgb(0 0 0 / 5%), 0 20px 48px rgb(0 0 0 / 5%),
     0 1px 4px rgb(0 0 0 / 10%);
@@ -92,3 +105,4 @@ pre {
   max-height: 200px; /* Adjust as needed */
   font-family: 'Courier New', monospace; /* Choose an appropriate monospace font */
 }
+

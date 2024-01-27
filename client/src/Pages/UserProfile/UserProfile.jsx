@@ -42,7 +42,7 @@ const UserProfile = ({ slideIn, handleSlideIn, isDay }) => {
 
   const renderLoginHistory = () => {
     return (
-      <div>
+      <div className={` lgh ${isDay ? 'day' : 'night'}`}>
         <h2>Login History</h2>
         <ul>
           {loginHistory.map((entry) => (
@@ -60,7 +60,7 @@ const UserProfile = ({ slideIn, handleSlideIn, isDay }) => {
   };
   return (
     <div className="home-container-1">
-      <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} />
+      <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} isDay={isDay}/>
       <div className="home-container-2">
         <section>
           <div className="user-details-container">
@@ -74,7 +74,7 @@ const UserProfile = ({ slideIn, handleSlideIn, isDay }) => {
               >
                 {currentProfile?.name.charAt(0).toUpperCase()}
               </Avatar>
-              <div className="user-name">
+              <div className={`user-name ${isDay ? 'day' : 'night'} `}>
                 <h1>{currentProfile?.name}</h1>
                 <p>
                   <FontAwesomeIcon icon={faBirthdayCake} /> Joined{" "}
@@ -94,7 +94,7 @@ const UserProfile = ({ slideIn, handleSlideIn, isDay }) => {
           </div>
           <>
             {Switch ? (
-              <EditProfileForm currentUser={currentUser} setSwitch={setSwitch} />
+              <EditProfileForm currentUser={currentUser} setSwitch={setSwitch} isDay={isDay}/>
             ) : (
               <>
                 <ProfileBio currentProfile={currentProfile} isDay={isDay} />

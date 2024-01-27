@@ -39,7 +39,7 @@ const HomeMainbar = ({isDay}) => {
           <h1>Loading...</h1>
         ) : (
           <>
-            <p>{questionsList.data.length} questions</p>
+            <p className={`tq ${isDay ? 'day' : 'night'}`}>{questionsList.data.length} questions</p>
             <QuestionList questionsList={questionsList.data} />
           </>
         )}

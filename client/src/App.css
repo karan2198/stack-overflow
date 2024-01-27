@@ -2,7 +2,7 @@
   text-align: center;
 }
 .App.night{
-  background-color: black;
+  background-color: hsl(210,3%,15%);
 }
 
 .App-logo {

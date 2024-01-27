@@ -9,7 +9,7 @@
   font-size: 13px;
 }
 .left-sidebar.night{
-  background-color: black;
+  background-color: hsl(210,3%,15%);
 }
 .nav-btn {
   background-color: inherit;
@@ -19,7 +19,7 @@
 }
 
 .side-nav.night{
-  background-color: black;
+  background-color: hsl(210,3%,15%);
 }
 .side-nav {
   height: auto;
