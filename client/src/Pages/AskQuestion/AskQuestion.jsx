@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./AskQuestion.css";
 import { askQuestion } from "../../actions/question";
-import { faBold, faItalic, faUnderline, faListUl, faListOl, faLink, faAlignLeft, faAlignCenter, faAlignRight, faAlignJustify, faImage, faVideo , faCode} from '@fortawesome/free-solid-svg-icons';
+import { faBold, faItalic, faUnderline, faListUl, faListOl, faLink, faAlignLeft, faAlignCenter, faAlignRight, faAlignJustify, faImage, faVideo, faCode } from '@fortawesome/free-solid-svg-icons';
 
 
 const AskQuestion = () => {
@@ -52,10 +52,13 @@ const AskQuestion = () => {
           alert('Invalid YouTube video link. Please enter a valid link.');
         }
       }
-    } else if (format === 'insertCodeBlock') {
-      const codeBlock = '<pre><code>Enter your code here</code></pre>';
-      document.execCommand('insertHTML', false, codeBlock);
-
+    }  else if (format === 'insertCodeBlock') {
+      const codeBlock = document.createElement('pre');
+      const codeElement = document.createElement('code');
+      codeElement.textContent = 'Enter your code here';
+      codeBlock.appendChild(codeElement);
+      editorRef.current.focus();
+      editorRef.current.ownerDocument.execCommand('insertHTML', false, codeBlock.outerHTML);
     }
     else {
       document.execCommand(format, false, null);

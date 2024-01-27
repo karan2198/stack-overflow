@@ -87,3 +87,8 @@
   text-decoration: underline;
 }
 
+pre {
+  overflow: auto;
+  max-height: 200px; /* Adjust as needed */
+  font-family: 'Courier New', monospace; /* Choose an appropriate monospace font */
+}
