@@ -79,7 +79,7 @@ function App() {
     <div className={`App ${isDay ? 'day' : 'night'}`}>
       <Router>
         <ThemeChange />
-        <Navbar handleSlideIn={handleSlideIn} />
+        <Navbar slideIn={slideIn} handleSlideIn={handleSlideIn} isDay={isDay}/>
         <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn} isDay={isDay} />
       </Router>
 

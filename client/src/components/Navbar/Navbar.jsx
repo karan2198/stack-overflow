@@ -10,7 +10,7 @@ import "./Navbar.css";
 import { setCurrentUser } from "../../actions/currentUser";
 import bars from "../../assets/bars-solid.svg";
 
-const Navbar = ({ handleSlideIn, isDay }) => {
+const Navbar = ({ slideIn, handleSlideIn, isDay }) => {
   
   const dispatch = useDispatch();
   var User = useSelector((state) => state.currentUserReducer);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Navbar from '../Navbar/Navbar';
+
 
 
 const ThemeChange = () => {
@@ -50,7 +50,7 @@ const ThemeChange = () => {
 
   return (
     <div>
-      <Navbar isDay={isDay} />
+     
       
     </div>
   );

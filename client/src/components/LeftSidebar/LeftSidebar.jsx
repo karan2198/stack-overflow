@@ -2,9 +2,15 @@ import React from "react";
 import "./LeftSidebar.css";
 import { NavLink } from "react-router-dom";
 import Globe from "../../assets/Globe.svg";
+import PropTypes from 'prop-types';
 
-const LeftSidebar = ({ slideIn, handleSlideIn, isDay}) => {
-  console.log('isDay in leftSideBar:' , isDay);
+const LeftSidebar = ({ slideIn, handleSlideIn, isDay }) => {
+  LeftSidebar.propTypes = {
+    slideIn: PropTypes.bool.isRequired,
+    handleSlideIn: PropTypes.func.isRequired,
+    isDay: PropTypes.bool.isRequired,
+  };
+  console.log('isDay in leftSideBar:', isDay);
   const slideInStyle = {
     transform: "translateX(0%)",
   };
@@ -14,9 +20,13 @@ const LeftSidebar = ({ slideIn, handleSlideIn, isDay}) => {
   };
 
   const toggleSlide = () => {
-    // Call the provided handleSlideIn function to toggle the slideIn prop
-    if (handleSlideIn) {
+    console.log('handleSlideIn:', handleSlideIn);
+    console.log('typeof handleSlideIn:', typeof handleSlideIn);
+
+    if (typeof handleSlideIn === 'function') {
       handleSlideIn(!slideIn);
+    } else {
+      console.error('handleSlideIn is not a function');
     }
   };
 
@@ -32,8 +42,8 @@ const LeftSidebar = ({ slideIn, handleSlideIn, isDay}) => {
           </NavLink>
         </button>
         <div className="side-nav-div">
-          <div style={{display:'flex' , flexDirection:'row',}}>
-            <p  className={`all ${isDay ? 'day' : 'night'} `}>PUBLIC</p>
+          <div style={{ display: 'flex', flexDirection: 'row', }}>
+            <p className={`all ${isDay ? 'day' : 'night'} `}>PUBLIC</p>
           </div>
           <button onClick={toggleSlide} className="nav-btn">
             <NavLink
@@ -52,7 +62,7 @@ const LeftSidebar = ({ slideIn, handleSlideIn, isDay}) => {
               activeClassName="active"
               style={{ paddingLeft: "40px" }}
             >
-              <p  className={`all ${isDay ? 'day' : 'night'} `}>Tags</p>
+              <p className={`all ${isDay ? 'day' : 'night'} `}>Tags</p>
             </NavLink>
           </button>
           <button onClick={toggleSlide} className="nav-btn">
@@ -62,7 +72,7 @@ const LeftSidebar = ({ slideIn, handleSlideIn, isDay}) => {
               activeClassName="active"
               style={{ paddingLeft: "40px" }}
             >
-              <p  className={`all ${isDay ? 'day' : 'night'} `}>Users</p>
+              <p className={`all ${isDay ? 'day' : 'night'} `}>Users</p>
             </NavLink>
           </button>
         </div>
