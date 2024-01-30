@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     const fetchWeather = async (latitude, longitude) => {
       try {
-        const response = await axios.get(`http://localhost:3000/weather?lat=${latitude}&lon=${longitude}`);
+        const response = await axios.get(`https://stack-overflow-backend-qf3u.onrender.com/weather?lat=${latitude}&lon=${longitude}`);
         const data = response.data;
 
         const currentTime = Math.floor(new Date().getTime() / 1000);
@@ -55,7 +55,7 @@ function App() {
     } else {
       console.error('Geolocation is not supported in this browser.');
     }
-  }, []);
+  }, );
 
   useEffect(() => {
     if (window.innerWidth <= 760) {

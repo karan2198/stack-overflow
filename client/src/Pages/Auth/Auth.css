@@ -15,10 +15,10 @@
   margin-right: 30px;
 }
 
-.auth-container-1 h1{
+.auth-container-1.night h1{
   color:white;
 }
-.auth-container-1 p{
+.auth-container-1.night p{
   color:white;
 }
 

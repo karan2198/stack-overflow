@@ -13,9 +13,11 @@ const app = express();
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
-app.set('trust proxy', true);
-app.use(cors());
 
+app.use(cors());
+app.get("/", (req , res) => {
+  res.send("stack-overflow-backend API.");
+});
 app.use("/user", userRoutes);
 app.use("/questions", questionRoutes);
 app.use("/answer", answerRoutes);

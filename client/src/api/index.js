@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  // baseURL: "https://stack-overflow-eight.vercel.app/",
-  baseURL: "http://localhost:3000"
+  baseURL: "https://stack-overflow-backend-qf3u.onrender.com",
+  // baseURL: "http://localhost:3000"
 });
 
 API.interceptors.request.use((req) => {

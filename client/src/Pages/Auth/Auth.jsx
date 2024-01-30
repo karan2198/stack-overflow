@@ -6,7 +6,7 @@ import "./Auth.css";
 import icon from "../../assets/icon.png";
 import AboutAuth from "./AboutAuth";
 import { signup, login } from "../../actions/auth";
-const Auth = ({isDay}) => {
+const Auth = ({ isDay }) => {
   const [isSignup, setIsSignup] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -21,45 +21,62 @@ const Auth = ({isDay}) => {
     setEmail("");
     setPassword("");
   };
-  
-  const handleSubmit = async (e) => {
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (!email && !password) {
+  //     alert("Enter email and password");
+  //     return;
+  //   }
+
+  //   const loginInfo = {
+  //     browser: navigator.userAgent,
+  //     os: navigator.platform,
+  //     device: /Mobi/.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
+  //   }
+  //   try {
+  //     if (isSignup) {
+  //       if (!name) {
+  //         alert("Enter a name to continue");
+  //         return;
+  //       }
+  //       await dispatch(signup({ name, email, password }, navigate));
+  //     } else {
+  //       await dispatch(login({ email, password }, navigate));
+  //     }
+  //     const backendUrl = 'https://stack-overflow-backend-qf3u.onrender.com';
+  //     // const backendUrl = 'http://localhost:3000'
+
+  //     const loginResponse = await fetch(`${backendUrl}/user/login`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(loginInfo),
+  //     });
+  //     const loginData = await loginResponse.json();
+  //     console.log("Login Response:", loginData);
+  //   } catch (error) {
+  //     console.error("Error during login:", error);
+  //     alert("Something went wrong. Please try again.");
+  //   }
+  // };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!email && !password) {
       alert("Enter email and password");
-      return;
     }
-
-    const loginInfo = {
-      browser: navigator.userAgent,
-      os: navigator.platform,
-      device: /Mobi/.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
-    }
-    try {
-      if (isSignup) {
-        if (!name) {
-          alert("Enter a name to continue");
-          return;
-        }
-        await dispatch(signup({ name, email, password }, navigate));
-      } else {
-        await dispatch(login({ email, password }, navigate));
+    if (isSignup) {
+      if (!name) {
+        alert("Enter a name to continue");
       }
-      const backendUrl = 'http://localhost:3000'; 
-
-      await fetch(`${backendUrl}/user/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginInfo),
-      });
-
-    } catch (error) {
-      console.error("Error during login:", error);
-      alert("Something went wrong. Please try again.");
+      dispatch(signup({ name, email, password }, navigate));
+    } else {
+      dispatch(login({ email, password }, navigate));
     }
   };
-
+  
   return (
     <section className={`auth-section ${isDay ? 'day' : 'night'}`}>
       {isSignup && <AboutAuth isDay={isDay} />}
